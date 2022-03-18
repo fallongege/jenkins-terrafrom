@@ -15,14 +15,9 @@ pipeline {
                 sh 'terraform init'
             }
         }
-        stage ('Terraform Plan'){
+        stage ('Terraform Destroy'){
             steps {
-                sh 'terraform plan -var-file terraform-dev.tfvars'
-            }
-        }
-        stage ('Terraform Apply'){
-            steps {
-                sh 'terraform apply -var-file terraform-dev.tfvars --auto-approve'
+                sh 'terraform destroy -var-file terraform-dev.tfvars --auto-approve'
             }
         }
     }

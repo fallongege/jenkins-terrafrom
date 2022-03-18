@@ -1,4 +1,5 @@
 output "vpcid" {
+  description = "Output for vpc id"
   value = aws_vpc.dev-vpc.id
 }
 output "publicsubnet_id" {

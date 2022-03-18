@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
     tools {
@@ -10,9 +9,19 @@ pipeline {
                 git credentialsId: 'github', url: 'https://github.com/fallongege/jenkins-terrafrom.git'
             }
         }
-        stage ('Terraform Destroy'){
+        stage ('Terraform init') {
+            steps{
+                sh 'terraform init'
+            }
+        }
+        stage ('Terraform Plan'){
             steps {
-                sh 'terraform destroy -var-file terraform-dev.tfvars --auto-approve'
+                sh 'terraform plan -var-file terraform-dev.tfvars'
+            }
+        }
+        stage ('Terraform Apply'){
+            steps {
+                sh 'terraform apply -var-file terraform-dev.tfvars --auto-approve'
             }
         }
     }

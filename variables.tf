@@ -16,3 +16,6 @@ variable "instance_type" {
 variable "keypair" {
 
 }
+variable "Az" {
+  default = "us-east-1a"
+}

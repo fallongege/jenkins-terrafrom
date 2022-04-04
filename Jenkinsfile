@@ -25,4 +25,7 @@ pipeline {
             }
         }
     }
+    post {
+        echo "Build is done"
+    }
 }
